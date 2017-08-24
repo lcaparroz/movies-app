@@ -1,6 +1,7 @@
 package br.com.campuscode.moviesapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import br.com.campuscode.moviesapp.MovieDescriptionActivity;
 import br.com.campuscode.moviesapp.R;
 import br.com.campuscode.moviesapp.models.Movie;
 
@@ -34,10 +36,19 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     @Override
-    public void onBindViewHolder(MovieViewHolder holder, int position) {
+    public void onBindViewHolder(final MovieViewHolder holder, int position) {
         holder.img_movie_poster.setImageResource(R.drawable.moonlight);
-        holder.tv_movie_name.setText(movieList.get(position).getName());
+        holder.tv_movie_name.setText(movieList.get(position).getTitle());
         holder.tv_movie_release_date.setText(movieList.get(position).getReleaseDate());
+
+        holder.img_movie_poster.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent viewMovieDescriptionIntent = new Intent(context,
+                        MovieDescriptionActivity.class);
+                context.startActivity(viewMovieDescriptionIntent);
+            }
+        });
     }
 
     @Override
@@ -57,6 +68,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             img_movie_poster      = itemView.findViewById(R.id.img_movie_poster);
             tv_movie_name         = itemView.findViewById(R.id.tv_movie_name);
             tv_movie_release_date = itemView.findViewById(R.id.tv_movie_release_date);
+
+
         }
     }
 }

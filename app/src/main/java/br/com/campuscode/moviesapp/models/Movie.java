@@ -1,24 +1,76 @@
 package br.com.campuscode.moviesapp.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by campuscode02 on 8/22/17.
  */
 
 public class Movie {
 
-    private String name;
+    private String title;
+    @SerializedName("release_date")
     private String releaseDate;
+    private String overview;
+    @SerializedName("vote_count")
+    private int voteCount;
+    @SerializedName("vote_average")
+    private Float  voteAverage;
+    @SerializedName("poster_path")
+    private String posterPath;
+    @SerializedName("backdrop_path")
+    private String backdropPath;
 
-    public Movie(String name, String releaseDate) {
-        this.name = name;
+    public Movie(String title, String releaseDate) {
+        this.title = title;
         this.releaseDate = releaseDate;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public String getReleaseDate() {
         return releaseDate;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public int getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
+    }
+
+    public Float getVoteAverage() {
+        return voteAverage;
+    }
+
+    public void setVoteAverage(Float voteAverage) {
+        this.voteAverage = voteAverage;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
+    public String getBackdropPath() {
+        return backdropPath;
+    }
+
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
     }
 }
