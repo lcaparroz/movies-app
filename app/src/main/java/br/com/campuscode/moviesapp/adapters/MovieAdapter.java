@@ -2,12 +2,15 @@ package br.com.campuscode.moviesapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,11 +44,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         holder.tv_movie_name.setText(movieList.get(position).getTitle());
         holder.tv_movie_release_date.setText(movieList.get(position).getReleaseDate());
 
+        final Intent viewMovieDescriptionIntent = new Intent(context,
+                MovieDescriptionActivity.class);
+        viewMovieDescriptionIntent.putExtra("movie", movieList.get(position));
+
+        Picasso.with(context).load(movieList.get(position).getPosterPath()).into(holder.img_movie_poster);
         holder.img_movie_poster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent viewMovieDescriptionIntent = new Intent(context,
-                        MovieDescriptionActivity.class);
                 context.startActivity(viewMovieDescriptionIntent);
             }
         });

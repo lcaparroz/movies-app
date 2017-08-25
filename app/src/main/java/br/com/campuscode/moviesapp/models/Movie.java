@@ -2,11 +2,15 @@ package br.com.campuscode.moviesapp.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
+import br.com.campuscode.moviesapp.Config;
+
 /**
  * Created by campuscode02 on 8/22/17.
  */
 
-public class Movie {
+public class Movie implements Serializable {
 
     private String title;
     @SerializedName("release_date")
@@ -59,7 +63,7 @@ public class Movie {
     }
 
     public String getPosterPath() {
-        return posterPath;
+        return Config.POSTER_BASE_URL + posterPath;
     }
 
     public void setPosterPath(String posterPath) {
@@ -67,7 +71,7 @@ public class Movie {
     }
 
     public String getBackdropPath() {
-        return backdropPath;
+        return Config.BACKDROP_BASE_URL + backdropPath;
     }
 
     public void setBackdropPath(String backdropPath) {
